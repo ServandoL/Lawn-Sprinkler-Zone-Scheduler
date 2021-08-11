@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Lawn Sprinkler Zone Scheduler",
-    "icon": "./src/images/calendar2-week-fill.jpg",
+    "icon": "./src/images/calendar2-week-fill.png",
     "slug": "App",
     "version": "1.0.0",
     "ios": {
@@ -14,7 +14,8 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "Generates a schedule for a specific zone type for lawn irrigation."
   },
   "name": "App"
 }
