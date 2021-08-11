@@ -1,0 +1,159 @@
+[
+    {
+        "id": 1,
+        "Type": "Clay",
+        "SoilWaterHoldingCapacity": 0.146,
+        "PlantAvailableWater": 0.09,
+        "InfiltrationRate": {
+            "flat_slope": 0.13,
+            "slight_slope": 0.1,
+            "moderate_slope": 0.08,
+            "steep_slope": 0.05
+        },
+        "SoilTexture": "Fine Texture",
+        "SoilComponent": {
+            "SandyClay": {
+                "IntakeRate": "Low",
+                "WaterRetention": "High",
+                "DrainageErosion": "Drainage"
+            },
+            "SiltyClay": {
+                "IntakeRate": "Low",
+                "WaterRetention": "High",
+                "DrainageErosion": "Sever erosion"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "Type": "Clay Loam",
+        "SoilWaterHoldingCapacity": 0.17,
+        "PlantAvailableWater": 0.08,
+        "InfiltrationRate": {
+            "flat_slope": 0.25,
+            "slight_slope": 0.2,
+            "moderate_slope": 0.15,
+            "steep_slope": 0.10
+        }
+    },
+    {
+        "id": 3,
+        "Type": "Silt Loam",
+        "SoilWaterHoldingCapacity": 0.15,
+        "PlantAvailableWater": 0.08,
+        "InfiltrationRate": {
+            "flat_slope": 0.50,
+            "slight_slope": 0.40,
+            "moderate_slope": 0.30,
+            "steep_slope": 0.20
+        }
+    },
+    {
+        "id": 4,
+        "Type": "Loam",
+        "SoilWaterHoldingCapacity": 0.14,
+        "PlantAvailableWater": 0.07,
+        "InfiltrationRate": {
+            "flat_slope": 0.54,
+            "slight_slope": 0.43,
+            "moderate_slope": 0.33,
+            "steep_slope": 0.22
+        },
+        "SoilTexture": {
+            "ModeratelyCoarse": {
+                "SoilComponent": {
+                    "SandyLoam": {
+                        "IntakeRate": "Moderately high",
+                        "WaterRetention": "Moderately low",
+                        "DrainageErosion": "Low erosion"
+                    },
+                    "FineLoam": {
+                        "IntakeRate": "Moderately high",
+                        "WaterRetention": "Moderately low",
+                        "DrainageErosion": "Good drainage"
+                    }
+                }
+            },
+            "MediumTexture": {
+                "SoilComponent": {
+                    "VeryFineLoam": {
+                        "IntakeRate": "Medium",
+                        "WaterRetention": "Moderately high",
+                        "DrainageErosion": "Moderate drainage"
+                    },
+                    "Loam": {
+                        "IntakeRate": "Medium",
+                        "WaterRetention": "Moderately high",
+                        "DrainageErosion": "Moderate drainage"
+                    },
+                    "SiltyLoam": {
+                        "IntakeRate": "Medium",
+                        "WaterRetention": "Moderately high",
+                        "DrainageErosion": "Moderate drainage"
+                    },
+                    "Silt": {
+                        "IntakeRate": "Medium",
+                        "WaterRetention": "Moderately high",
+                        "DrainageErosion": "Moderate drainage"
+                    }
+                }
+            },
+            "ModeratelyFine": {
+                "SoilComponent": {
+                    "ClayLoam": {
+                        "IntakeRate": "Moderately low",
+                        "WaterRetention": "High",
+                        "DrainageErosion": "N/A"
+                    },
+                    "SandyClayLoam": {
+                        "IntakeRate": "Moderately low",
+                        "WaterRetention": "High",
+                        "DrainageErosion": "N/A"
+                    },
+                    "SiltyClayLoam": {
+                        "IntakeRate": "Moderately low",
+                        "WaterRetention": "High",
+                        "DrainageErosion": "N/A"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": 5,
+        "Type": "Sandy Loam",
+        "SoilWaterHoldingCapacity": 0.12,
+        "PlantAvailableWater": 0.06,
+        "InfiltrationRate": {
+            "flat_slope": 0.75,
+            "slight_slope": 0.6,
+            "moderate_slope": 0.45,
+            "steep_slope": 0.30
+        }
+    },
+    {
+        "id": 6,
+        "Type": "Sand",
+        "SoilWaterHoldingCapacity": 0.07,
+        "PlantAvailableWater": 0.04,
+        "InfiltrationRate": {
+            "flat_slope": 1.06,
+            "slight_slope": 0.85,
+            "moderate_slope": 0.64,
+            "steep_slope": 0.42
+        },
+        "SoilTexture": "Coarse Texture",
+        "SoilComponent": {
+            "Sand": {
+                "IntakeRate": "Very high",
+                "WaterRetention": "Very low",
+                "DrainageErosion": "Low erosion"
+            },
+            "LoamySand": {
+                "IntakeRate": "High",
+                "WaterRetention": "low",
+                "DrainageErosion": "Good drainage"
+            }
+        }
+    }
+]

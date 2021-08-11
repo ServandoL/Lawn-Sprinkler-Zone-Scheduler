@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "Type": "Ground Cover, Trees, and Shrubs",
+        "Base Plant": "Ground Cover",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.9
+        },
+        "Density Factor": {
+            "Low": 0.6,
+            "Average": 1.1,
+            "High": 1.1
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.4
+        }
+    },
+    {
+        "id": 2,
+        "Type": "Shrubs only",
+        "Base Plant": "Shrubs",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.9
+        },
+        "Density Factor": {
+            "Low": 0.5,
+            "Average": 1.0,
+            "High": 1.1
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.3
+        }
+    },
+    {
+        "id": 3,
+        "Type": "Shrubs and Trees",
+        "Base Plant": "Shrubs",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.9
+        },
+        "Density Factor": {
+            "Low": 0.5,
+            "Average": 1.0,
+            "High": 1.1
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.3
+        }
+    },
+    {
+        "id": 4,
+        "Type": "Ground Cover and Shrubs",
+        "Base Plant": "Ground Cover",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.7
+        },
+        "Density Factor": {
+            "Low": 0.5,
+            "Average": 1.0,
+            "High": 1.1
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.3
+        }
+    },
+    {
+        "id": 5,
+        "Type": "Ground Cover and Trees",
+        "Base Plant": "Ground Cover",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.9
+        },
+        "Density Factor": {
+            "Low": 0.5,
+            "Average": 1.0,
+            "High": 1.3
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.4
+        }
+    },
+    {
+        "id": 6,
+        "Type": "Ground Cover only",
+        "Base Plant": "Ground Cover",
+        "Species Factor": {
+            "Low": 0.2,
+            "Average": 0.5,
+            "High": 0.7
+        },
+        "Density Factor": {
+            "Low": 0.5,
+            "Average": 1.0,
+            "High": 1.1
+        },
+        "Microclimate Factor": {
+            "Lots of Shade": 0.5,
+            "Some Shade": 1.0,
+            "Lots of Sun": 1.2
+        }
+    }
+]

@@ -1,0 +1,100 @@
+[
+    {
+        "id": 1,
+        "name": "Cool Season Turf",
+        "CropCoefficient": 0.75,
+        "MinimumRootDepth": 4,
+        "MaximumRootDepth": 8,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 2,
+        "name": "Warm Season Turf",
+        "CropCoefficient": 0.65,
+        "MinimumRootDepth": 6,
+        "MaximumRootDepth": 12,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 3,
+        "name": "Trees",
+        "CropCoefficient": 0.75,
+        "MinimumRootDepth": 12,
+        "MaximumRootDepth": 24,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 4,
+        "name": "Shrubs",
+        "CropCoefficient": 0.50,
+        "MinimumRootDepth": 6,
+        "MaximumRootDepth": 12,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 5,
+        "name": "Ground Cover",
+        "CropCoefficient": 0.60,
+        "MinimumRootDepth": 4,
+        "MaximumRootDepth": 6,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 6,
+        "name": "Mix",
+        "CropCoefficient": 0.8,
+        "MinimumRootDepth": 4,
+        "MaximumRootDepth": 24,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    },
+    {
+        "id": 7,
+        "name": "Desert Plants",
+        "CropCoefficient": 0.35,
+        "MinimumRootDepth": 4,
+        "MaximumRootDepth": 6,
+        "AdjustmentFactor": {
+            "Maximum": 1.00,
+            "High": 0.80,
+            "Normal": 0.60,
+            "Low": 0.5,
+            "Minimum": 0.4
+        }
+    }
+]
