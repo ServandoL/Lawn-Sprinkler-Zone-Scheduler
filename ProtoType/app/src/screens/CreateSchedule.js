@@ -268,19 +268,29 @@ const CreateSchedule = ({ route, navigation }) => {
         <SectionList
             ListHeaderComponent={
                 <View style={styles.container}>
-                    {
-                        rainfall === "yes" ?
-                            <Text style={styles.heading}>Zone run time in {city.name}, TX considering average monthly rainfall</Text> :
-                            <Text style={styles.heading}>Zone run time in {city.name}, TX not considering average monthly rainfall</Text>
-                    }
-                    {
-                        gpm ?
-                            <Text style={styles.baseText}>{zoneName} @ {gpm} gpm and {precipitationRate.toFixed(2)} inches of water per hour</Text> :
-                            <Text style={styles.baseText}>{zoneName} @ {precipitationRate.toFixed(2)} inches of water per hour</Text>
-                    }
-                    <Text style={styles.baseText}>Landscape: {zoneType.name}</Text>
-                    <Text style={styles.baseText}>Spray type: {sprayType}</Text>
-                    <Text style={styles.baseText}>Soil type: {soilType.type}</Text>
+                    <View style={styles.textWrap}>
+                        {
+                            rainfall === "yes" ?
+                                <Text style={styles.heading}>Zone run time in {city.name}, TX considering average monthly rainfall</Text> :
+                                <Text style={styles.heading}>Zone run time in {city.name}, TX not considering average monthly rainfall</Text>
+                        }
+                    </View>
+                    <View style={styles.textWrap}>
+                        {
+                            gpm ?
+                                <Text style={styles.baseText}>{zoneName} @ {gpm} gpm and {precipitationRate.toFixed(2)} inches of water per hour</Text> :
+                                <Text style={styles.baseText}>{zoneName} @ {precipitationRate.toFixed(2)} inches of water per hour</Text>
+                        }
+                    </View>
+                    <View style={styles.textWrap}>
+                        <Text style={styles.baseText}>Landscape: {zoneType.name}</Text>
+
+                    </View>
+                    <View style={styles.textWrap}>
+                        <Text style={styles.baseText}>Spray type: {sprayType}</Text>
+
+                    </View>
+                        <Text style={styles.baseText}>Soil type: {soilType.type}</Text>
 
                 </View>
             }
@@ -302,6 +312,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 16,
     },
+    textWrap: {
+        borderBottomWidth: 2,
+        borderBottomColor: "lightgray"
+    },
     baseText: {
         fontSize: 16,
         margin: 5
@@ -319,6 +333,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     item: {
+        backgroundColor: "lightgray",
         color: "white",
         padding: 10,
         margin: 10,

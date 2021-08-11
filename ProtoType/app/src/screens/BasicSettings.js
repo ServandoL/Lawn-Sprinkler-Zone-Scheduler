@@ -90,7 +90,7 @@ const BasicSettings = ({ route, navigation }) => {
                         style={pickerSelectStyles}
                         onValueChange={setDays}
                         items={[
-                            {label: "Decide for me (experimental)", value: undefined},
+                            {label: "Decide for me (experimental)", value: ""},
                             {label: "1 day", value: 1},
                             {label: "2 days", value: 2},
                             {label: "3 days", value: 3},
