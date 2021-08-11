@@ -5,7 +5,19 @@ import LandscapeData from "../api/landscapeData.json";
 import ETData from "../api/texasETData.json";
 import SoilData from "../api/soilData.json";
 
-const BasicSettings = ({ navigation }) => {
+const BasicSettings = ({ route, navigation }) => {
+
+    // let { area,
+    //      rainfall,
+    //      awhc,
+    //      rootDepth,
+    //      allowableDepletion,
+    //      efficiency,
+    //      cropCoefficient,
+    //      precipitationRate,
+    //      gpm
+    // } = route.params;
+
     const [zoneName, setZoneName] = useState("");
     const [zoneType, setZoneType] = useState("");
     const [sprayType, setSprayType] = useState("");
@@ -69,7 +81,7 @@ const BasicSettings = ({ navigation }) => {
                         style={styles.FormControl}
                         onChangeText={setZoneName}
                         value={zoneName}
-                        placeholder="Enter zone name"
+                        placeholder="Enter zone name (optional)"
                     />
                 </View>
                 <View style={styles.FormGroup}>

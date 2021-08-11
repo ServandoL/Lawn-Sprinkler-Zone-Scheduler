@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, ScrollView, StyleSheet, TextInput, View, Button } from "react-native";
+import { Text, ScrollView, StyleSheet, TextInput, View, Button, Platform } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
 const AdvancedSettings = ({ route, navigation }) => {
@@ -66,7 +66,7 @@ const AdvancedSettings = ({ route, navigation }) => {
                         placeholder="ex: 0.5"
                     />
                 </View>
-                <View style={styles.FormGroup}>
+                {/* <View style={styles.FormGroup}>
                     <Text style={styles.FormLabel}>System Efficiency (decimal percent)</Text>
                     <TextInput
                         style={styles.FormControl}
@@ -74,7 +74,7 @@ const AdvancedSettings = ({ route, navigation }) => {
                         value={efficiency}
                         placeholder="ex: 0.8"
                     />
-                </View>
+                </View> */}
                 <View style={styles.FormGroup}>
                     <Text style={styles.FormLabel}>Crop Coefficient (decimal)</Text>
                     <TextInput
@@ -103,6 +103,13 @@ const AdvancedSettings = ({ route, navigation }) => {
                     />
                 </View>
             </View>
+            {/* <View style={styles.BtnWrap}>
+                <Button 
+                    color={Platform.OS === "ios" ? "white" : "black"}
+                    title="Go back"
+                    onPress={() => goBack()}
+                />
+            </View> */}
             <View style={styles.BtnWrap}>
                 <Button 
                     color={Platform.OS === "ios" ? "white" : "black"}

@@ -91,6 +91,8 @@ const CreateSchedule = ({ route, navigation }) => {
         } else {
             precipitationRate = 0.5;
         }
+    } else {
+        precipitationRate = parseFloat(precipitationRate);
     }
     // calculate precipitation rate if area and gpm are given by user
     if (area && gpm) {
@@ -273,7 +275,7 @@ const CreateSchedule = ({ route, navigation }) => {
                     }
                     {
                         gpm ?
-                            <Text style={styles.baseText}>{zoneName} @ {gpm} gpm and {precipitationRate.toFixed(2)} in/hr</Text> :
+                            <Text style={styles.baseText}>{zoneName} @ {gpm} gpm and {precipitationRate.toFixed(2)} inches of water per hour</Text> :
                             <Text style={styles.baseText}>{zoneName} @ {precipitationRate.toFixed(2)} inches of water per hour</Text>
                     }
                     <Text style={styles.baseText}>Landscape: {zoneType.name}</Text>
