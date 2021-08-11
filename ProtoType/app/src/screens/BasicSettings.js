@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Text, ScrollView, StyleSheet, TextInput, View, Button, Platform } from "react-native";
+import { Text, ScrollView, StyleSheet, Image, TextInput, View, Button, Platform, Pressable } from "react-native";
+import InfoModal from "../components/InfoModal";
 import RNPickerSelect from "react-native-picker-select";
 import LandscapeData from "../api/landscapeData.json";
 import ETData from "../api/texasETData.json";
@@ -17,7 +18,8 @@ const BasicSettings = ({ route, navigation }) => {
     //      precipitationRate,
     //      gpm
     // } = route.params;
-
+    const [info, setInfo] = useState("");
+    const [toggleModal, setToggleModal] = useState(false);
     const [zoneName, setZoneName] = useState("");
     const [zoneType, setZoneType] = useState("");
     const [sprayType, setSprayType] = useState("");
@@ -31,8 +33,8 @@ const BasicSettings = ({ route, navigation }) => {
         {
             label: type.name,
             value: [
-                type.name, 
-                parseFloat(type.CropCoefficient), 
+                type.name,
+                parseFloat(type.CropCoefficient),
                 parseFloat(type.MaximumRootDepth)
             ]
         }
@@ -43,8 +45,8 @@ const BasicSettings = ({ route, navigation }) => {
             label: type.Type,
             value: [
                 type.Type,
-                parseFloat(type.SoilWaterHoldingCapacity), 
-                parseFloat(type.PlantAvailableWater), 
+                parseFloat(type.SoilWaterHoldingCapacity),
+                parseFloat(type.PlantAvailableWater),
                 type.InfiltrationRate
             ]
         }
@@ -71,6 +73,10 @@ const BasicSettings = ({ route, navigation }) => {
         }
     ));
 
+    const toggle = () => {
+        setToggleModal(true);
+    }
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.WrapBasic}>
@@ -85,24 +91,58 @@ const BasicSettings = ({ route, navigation }) => {
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Days to water per week</Text>
-                    <RNPickerSelect 
+                    <View style={styles.textWrap}>
+                        
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("days")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>
+                        <Text style={styles.FormLabel}>Days to water per week</Text>
+                    </View>
+                    <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setDays}
                         items={[
-                            {label: "Decide for me (experimental)", value: ""},
-                            {label: "1 day", value: 1},
-                            {label: "2 days", value: 2},
-                            {label: "3 days", value: 3},
-                            {label: "4 days", value: 4},
-                            {label: "5 days", value: 5},
-                            {label: "6 days", value: 6},
-                            {label: "7 days", value: 7}
+                            { label: "Decide for me (experimental)", value: "" },
+                            { label: "1 day", value: 1 },
+                            { label: "2 days", value: 2 },
+                            { label: "3 days", value: 3 },
+                            { label: "4 days", value: 4 },
+                            { label: "5 days", value: 5 },
+                            { label: "6 days", value: 6 },
+                            { label: "7 days", value: 7 }
                         ]}
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Zone Type</Text>
+                <View style={styles.textWrap}>
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("zoneType")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>                        
+                        <Text style={styles.FormLabel}>Zone Type</Text>
+
+                    </View>
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setZoneType}
@@ -110,20 +150,54 @@ const BasicSettings = ({ route, navigation }) => {
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Spray Type</Text>
-                    <RNPickerSelect 
+                <View style={styles.textWrap}>
+                        
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("sprayType")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>
+                        <Text style={styles.FormLabel}>Spray Type</Text>
+                    </View>
+                    <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setSprayType}
                         items={[
-                            {label: "Rotor", value: "rotor"},
-                            {label: "Fixed Spray Head", value: "fixed spray head"},
-                            {label: "Rotary Nozzle", value: "rotary nozzle"},
-                            {label: "Drip Line", value: "drip line"}
+                            { label: "Rotor", value: "rotor" },
+                            { label: "Fixed Spray Head", value: "fixed spray head" },
+                            { label: "Rotary Nozzle", value: "rotary nozzle" },
+                            { label: "Drip Line", value: "drip line" }
                         ]}
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Soil Type</Text>
+                <View style={styles.textWrap}>
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("soilType")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>
+                        <Text style={styles.FormLabel}>Soil Type</Text>
+                    </View>
+                    
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setSoilType}
@@ -131,33 +205,84 @@ const BasicSettings = ({ route, navigation }) => {
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Sun Exposure</Text>
+                <View style={styles.textWrap}>
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("exposure")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>                    
+                        <Text style={styles.FormLabel}>Sun Exposure</Text>
+
+                    </View>
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setSunExposure}
                         items={[
-                            {label: "Lots of sun (6-8 hours of sun)", value:"lots of sun"},
-                            {label: "Some shade (4-6 hours of sun)", value:"some shade"},
-                            {label: "Lots of shade (2-4 hours of sun)", value:"lots of shade"},
-                            {label: "Mostly shade (2 or less hours of sun)", value:"mostly shade"}
+                            { label: "Lots of sun (6-8 hours of sun)", value: "lots of sun" },
+                            { label: "Some shade (4-6 hours of sun)", value: "some shade" },
+                            { label: "Lots of shade (2-4 hours of sun)", value: "lots of shade" },
+                            { label: "Mostly shade (2 or less hours of sun)", value: "mostly shade" }
                         ]}
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>Slope</Text>
+                <View style={styles.textWrap}>
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("slope")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>
+                        <Text style={styles.FormLabel}>Slope</Text>
+                    </View>
+                    
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setSlope}
                         items={[
-                            {label: "Flat", value:"flat"},
-                            {label: "Slight", value:"slight"},
-                            {label: "Moderate", value:"moderate"},
-                            {label: "Steep", value:"steep"}
+                            { label: "Flat", value: "flat" },
+                            { label: "Slight", value: "slight" },
+                            { label: "Moderate", value: "moderate" },
+                            { label: "Steep", value: "steep" }
                         ]}
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.FormLabel}>City</Text>
+                <View style={styles.textWrap}>
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("city")
+                                }}
+                            >
+                                <Image
+                                style={styles.img}
+                                source={require("../images/question-circle-fill.jpg")}
+                            ></Image>
+                            </Pressable>
+                            
+                        </View>
+                        <Text style={styles.FormLabel}>City</Text>
+                        </View>
+                    
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setCity}
@@ -165,12 +290,12 @@ const BasicSettings = ({ route, navigation }) => {
                     />
                 </View>
                 <View style={styles.FormGroup}>
-                    <Text style={styles.mutedText}>Everything on this page must be filled in, otherwise it will not work.</Text>
+                    <Text style={styles.mutedText}>Everything on this page must be filled in to get the most accurate results.</Text>
                 </View>
             </View>
 
             <View style={styles.BtnWrap}>
-                <Button 
+                <Button
                     color={Platform.OS === "ios" ? "white" : "black"}
                     title="Advanced Settings"
                     onPress={() => {
@@ -188,7 +313,7 @@ const BasicSettings = ({ route, navigation }) => {
                 />
             </View>
             <View style={styles.BtnWrap}>
-                <Button 
+                <Button
                     color={Platform.OS === "ios" ? "white" : "black"}
                     title="Generate Schedule"
                     onPress={() => {
@@ -205,6 +330,18 @@ const BasicSettings = ({ route, navigation }) => {
                     }}
                 />
             </View>
+            {
+                toggleModal &&
+                <InfoModal 
+                    animationType="slide"
+                    transparent={true}
+                    visible={toggleModal}
+                    onRequestClose={() => {
+                        setToggleModal(!toggleModal)
+                    }}
+                    info={info}
+                />
+            }
         </ScrollView>
     )
 
@@ -237,6 +374,20 @@ const styles = StyleSheet.create({
         flex: 0,
         margin: 5,
     },
+    img: {
+        height: 23,
+        width: 23
+    },
+    imgWrap: {
+        flexDirection: "column",
+        marginRight: 10
+        
+    },
+    textWrap: {
+        display: "flex",
+        width: "100%",
+        flexDirection: "row",
+    },
     FormControl: {
         width: "100%",
         fontSize: 16,
@@ -266,8 +417,8 @@ const pickerSelectStyles = StyleSheet.create({
         borderRadius: 4,
         color: "black",
         paddingRight: 30, // to ensure the text is never behind the icon
-      },
-      inputAndroid: {
+    },
+    inputAndroid: {
         fontSize: 16,
         paddingHorizontal: 10,
         paddingVertical: 8,
@@ -276,7 +427,7 @@ const pickerSelectStyles = StyleSheet.create({
         borderRadius: 4,
         color: "black",
         paddingRight: 30, // to ensure the text is never behind the icon
-      },
+    },
 });
 
 export default BasicSettings;

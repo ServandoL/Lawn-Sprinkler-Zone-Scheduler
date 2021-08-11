@@ -15,7 +15,8 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "description": "Generates a schedule for a specific zone type for lawn irrigation."
+    "description": "Generates a schedule for a specific zone type for lawn irrigation.",
+    "githubUrl": "https://github.com/ServandoL/Lawn-Sprinkler-Zone-Scheduler"
   },
   "name": "App"
 }

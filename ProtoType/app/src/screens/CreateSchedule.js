@@ -294,6 +294,12 @@ const CreateSchedule = ({ route, navigation }) => {
 
                 </View>
             }
+            ListFooterComponent={
+                <View style={styles.footer}>
+                    <Text style={styles.baseText}>Developed by Servando</Text>
+                    <Text style={styles.baseText}>Version 1.0.0</Text>
+                </View>
+            }
             sections={DATA}
             keyExtractor={(item, index) => item + index}
             renderItem={({ item }) => <Item title={item} />}
@@ -312,6 +318,11 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 16,
     },
+    footer: {
+        padding: 50,
+        alignItems: "center",
+        backgroundColor: "lightgray"
+    },
     textWrap: {
         borderBottomWidth: 2,
         borderBottomColor: "lightgray"
@@ -328,14 +339,14 @@ const styles = StyleSheet.create({
         margin: 10
     },
     heading: {
-        fontSize: 30,
+        fontSize: 18,
         fontWeight: "bold",
         marginBottom: 10
     },
     item: {
         backgroundColor: "lightgray",
         color: "white",
-        padding: 10,
+        padding: 15,
         margin: 10,
     },
     header: {
