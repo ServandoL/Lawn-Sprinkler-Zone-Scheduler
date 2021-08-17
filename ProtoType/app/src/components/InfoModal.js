@@ -11,7 +11,7 @@ const InfoModal = (props) => {
                     <View style={styles.modalView}>
                         {
                             props.info === "days" &&
-                            <Text style={styles.modalText}>To properly manage the irrigation system, the irrigator should calculate the total run time of the irrigation system for a complete cycle to ensure that it is capable of meeting the watering needs in the time available to water. Water restrictions may limit when irrigation may be used. Thus, the irrigation frequency is not calcualted, but instead it is given by water restrictions.</Text>
+                            <Text style={styles.modalText}>"Set days to water"{"\n"}To properly manage the irrigation system, the irrigator should calculate the total run time of the irrigation system for a complete cycle to ensure that it is capable of meeting the watering needs in the time available to water. Water restrictions may limit when irrigation may be used. Thus, the irrigation frequency is not calcualted, but instead it is given by water restrictions.</Text>
 
                         }
                         {
@@ -37,6 +37,10 @@ const InfoModal = (props) => {
                         {
                             props.info === "city" &&
                             <Text style={styles.modalText}>The historic evapotranspiration rates for the major cities in Texas. The averages used in this app were computed using climatic data over the entire period of record available from the National Weather Service. The data was provided by Texas A&M AgriLife Extension for 2021.</Text>
+                        }
+                        {
+                          props.info === "error" &&
+                          <Text style={modalText}>Please fill in all forms.</Text>
                         }
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
@@ -83,10 +87,10 @@ const styles = StyleSheet.create({
       backgroundColor: "#F194FF",
     },
     buttonClose: {
-      backgroundColor: "#232c34",
+      backgroundColor: "#62ccc0",
     },
     textStyle: {
-      color: "white",
+      color: "#282c34",
       fontWeight: "bold",
       textAlign: "center"
     },

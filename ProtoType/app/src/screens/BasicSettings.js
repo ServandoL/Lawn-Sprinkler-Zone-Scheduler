@@ -93,7 +93,7 @@ const BasicSettings = ({ route, navigation }) => {
                 <View style={styles.FormGroup}>
                     <View style={styles.textWrap}>
                         
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -106,12 +106,26 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
+                        </View> */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("days")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
                         </View>
-                        <Text style={styles.FormLabel}>Days to water per week</Text>
+                        <Text style={styles.FormLabel}>Watering days</Text>
                     </View>
                     <RNPickerSelect
                         style={pickerSelectStyles}
                         onValueChange={setDays}
+
                         items={[
                             { label: "Decide for me (experimental)", value: "" },
                             { label: "1 day", value: 1 },
@@ -126,7 +140,7 @@ const BasicSettings = ({ route, navigation }) => {
                 </View>
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -139,7 +153,20 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
-                        </View>                        
+                        </View>                         */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("zoneType")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
+                        </View>
                         <Text style={styles.FormLabel}>Zone Type</Text>
 
                     </View>
@@ -152,7 +179,7 @@ const BasicSettings = ({ route, navigation }) => {
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
                         
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -165,6 +192,19 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
+                        </View> */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("sprayType")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
                         </View>
                         <Text style={styles.FormLabel}>Spray Type</Text>
                     </View>
@@ -181,7 +221,7 @@ const BasicSettings = ({ route, navigation }) => {
                 </View>
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -194,6 +234,19 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
+                        </View> */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("soilType")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
                         </View>
                         <Text style={styles.FormLabel}>Soil Type</Text>
                     </View>
@@ -206,7 +259,7 @@ const BasicSettings = ({ route, navigation }) => {
                 </View>
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -219,7 +272,20 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
-                        </View>                    
+                        </View>                     */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("exposure")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
+                        </View>
                         <Text style={styles.FormLabel}>Sun Exposure</Text>
 
                     </View>
@@ -236,7 +302,7 @@ const BasicSettings = ({ route, navigation }) => {
                 </View>
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -249,6 +315,19 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
+                        </View> */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("slope")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
                         </View>
                         <Text style={styles.FormLabel}>Slope</Text>
                     </View>
@@ -266,7 +345,7 @@ const BasicSettings = ({ route, navigation }) => {
                 </View>
                 <View style={styles.FormGroup}>
                 <View style={styles.textWrap}>
-                        <View style={styles.imgWrap}>
+                        {/* <View style={styles.imgWrap}>
                             <Pressable
                                 onPress={() => {
                                     setToggleModal(true)
@@ -279,6 +358,19 @@ const BasicSettings = ({ route, navigation }) => {
                             ></Image>
                             </Pressable>
                             
+                        </View> */}
+                        <View style={styles.imgWrap}>
+                            <Pressable
+                                onPress={() => {
+                                    setToggleModal(true)
+                                    setInfo("city")
+                                }}
+                            >
+                            <View style={styles.circle}>
+                                <Text style={styles.circleTxt}>?</Text>
+                            </View>
+
+                            </Pressable>
                         </View>
                         <Text style={styles.FormLabel}>City</Text>
                         </View>
@@ -296,7 +388,7 @@ const BasicSettings = ({ route, navigation }) => {
 
             <View style={styles.BtnWrap}>
                 <Button
-                    color={Platform.OS === "ios" ? "white" : "black"}
+                    color={Platform.OS === "ios" ? "black" : "black"}
                     title="Advanced Settings"
                     onPress={() => {
                         navigation.push("AdvancedSettings", {
@@ -313,8 +405,28 @@ const BasicSettings = ({ route, navigation }) => {
                 />
             </View>
             <View style={styles.BtnWrap}>
-                <Button
-                    color={Platform.OS === "ios" ? "white" : "black"}
+                {
+                    !zoneType || !days || !sprayType || !soilType || !sunExposure || !city || !slope ?
+                    <Button
+                    color={Platform.OS === "ios" ? "black" : "black"}
+                    title="Generate Schedule"
+                    disabled
+                    onPress={() => {
+                        navigation.push("CreateSchedule", {
+                            zoneName: zoneName,
+                            zoneType: zoneType,
+                            days: days,
+                            sprayType: sprayType,
+                            soilType: soilType,
+                            sunExposure: sunExposure,
+                            city: city,
+                            slope: slope
+                        });
+                    }}
+                    />
+                     :
+                    <Button
+                    color={Platform.OS === "ios" ? "black" : "black"}
                     title="Generate Schedule"
                     onPress={() => {
                         navigation.push("CreateSchedule", {
@@ -329,6 +441,24 @@ const BasicSettings = ({ route, navigation }) => {
                         });
                     }}
                 />
+                }
+                {/* <Button
+                    color={Platform.OS === "ios" ? "black" : "black"}
+                    title="Generate Schedule"
+                    onPress={() => {
+                        navigation.push("CreateSchedule", {
+                            zoneName: zoneName,
+                            zoneType: zoneType,
+                            days: days,
+                            sprayType: sprayType,
+                            soilType: soilType,
+                            sunExposure: sunExposure,
+                            city: city,
+                            slope: slope
+                        });
+                    }}
+                /> */}
+
             </View>
             {
                 toggleModal &&
@@ -351,6 +481,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginHorizontal: 16,
+        marginBottom: 16,
+        marginTop: 16,
+        // marginHorizontal: 16,
+        backgroundColor: "#f4f7f0"
     },
     mutedText: {
         opacity: .5
@@ -367,8 +501,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     WrapBasic: {
-        borderColor: "#eee",
-        borderWidth: 3,
+        backgroundColor: "#f4f7f0",
     },
     FormGroup: {
         flex: 0,
@@ -396,14 +529,35 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         borderWidth: 2,
         borderColor: "#282c34",
+        backgroundColor: "#eee",
         borderRadius: 10,
     },
     BtnWrap: {
         flex: 1,
-        backgroundColor: "#282c34",
+        backgroundColor: "#bfd2d0",
+        borderWidth: 1,
+        borderColor: "#282c34",
+        borderRadius: 5,
         margin: 5,
         height: 50,
         padding: 5
+    },
+    circle: {
+        width: 20,
+        height: 20,
+        borderRadius: 50,
+        backgroundColor: "#62ccc0",
+        lineHeight: 0,
+        position: "relative"
+    },
+    circleTxt: {
+        fontSize: 14,
+        fontWeight: "bold",
+        position: "absolute",
+        bottom: "5%",
+        width: "100%",
+        textAlign: "center"
+
     },
 });
 
@@ -414,6 +568,7 @@ const pickerSelectStyles = StyleSheet.create({
         paddingHorizontal: 10,
         borderWidth: 2,
         borderColor: "#282c34",
+        backgroundColor: "#eee",
         borderRadius: 4,
         color: "black",
         paddingRight: 30, // to ensure the text is never behind the icon

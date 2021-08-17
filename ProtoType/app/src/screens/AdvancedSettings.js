@@ -66,7 +66,7 @@ const AdvancedSettings = ({ route, navigation }) => {
                         placeholder="ex: 0.5"
                     />
                 </View>
-                {/* <View style={styles.FormGroup}>
+                <View style={styles.FormGroup}>
                     <Text style={styles.FormLabel}>System Efficiency (decimal percent)</Text>
                     <TextInput
                         style={styles.FormControl}
@@ -74,7 +74,7 @@ const AdvancedSettings = ({ route, navigation }) => {
                         value={efficiency}
                         placeholder="ex: 0.8"
                     />
-                </View> */}
+                </View>
                 <View style={styles.FormGroup}>
                     <Text style={styles.FormLabel}>Crop Coefficient (decimal)</Text>
                     <TextInput
@@ -111,9 +111,12 @@ const AdvancedSettings = ({ route, navigation }) => {
                 />
             </View> */}
             <View style={styles.BtnWrap}>
-                <Button 
-                    color={Platform.OS === "ios" ? "white" : "black"}
+            {
+                    !zoneType || !days || !sprayType || !soilType || !sunExposure || !city || !slope ?
+                    <Button 
+                    color={Platform.OS === "ios" ? "black" : "black"}
                     title="Generate Schedule"
+                    disabled
                     onPress={() => {
                         navigation.push("CreateSchedule", {
                             zoneName: zoneName,
@@ -124,6 +127,7 @@ const AdvancedSettings = ({ route, navigation }) => {
                             sunExposure: sunExposure,
                             city: city,
                             slope: slope,
+                            efficiency: efficiency,
                             area: area,
                             rainfall: rainfall,
                             awhc: awhc,
@@ -136,6 +140,60 @@ const AdvancedSettings = ({ route, navigation }) => {
                         });
                     }}
                 />
+                     :
+                     <Button 
+                    color={Platform.OS === "ios" ? "black" : "black"}
+                    title="Generate Schedule"
+                    onPress={() => {
+                        navigation.push("CreateSchedule", {
+                            zoneName: zoneName,
+                            zoneType: zoneType, 
+                            days: days,
+                            sprayType: sprayType,
+                            soilType: soilType,
+                            sunExposure: sunExposure,
+                            city: city,
+                            slope: slope,
+                            efficiency: efficiency,
+                            area: area,
+                            rainfall: rainfall,
+                            awhc: awhc,
+                            rootDepth: rootDepth,
+                            allowableDepletion: allowableDepletion,
+                            efficiency: efficiency,
+                            cropCoefficient: cropCoefficient,
+                            precipitationRate: precipitationRate,
+                            gpm: gpm
+                        });
+                    }}
+                />
+                }
+                {/* <Button 
+                    color={Platform.OS === "ios" ? "black" : "black"}
+                    title="Generate Schedule"
+                    onPress={() => {
+                        navigation.push("CreateSchedule", {
+                            zoneName: zoneName,
+                            zoneType: zoneType, 
+                            days: days,
+                            sprayType: sprayType,
+                            soilType: soilType,
+                            sunExposure: sunExposure,
+                            city: city,
+                            slope: slope,
+                            efficiency: efficiency,
+                            area: area,
+                            rainfall: rainfall,
+                            awhc: awhc,
+                            rootDepth: rootDepth,
+                            allowableDepletion: allowableDepletion,
+                            efficiency: efficiency,
+                            cropCoefficient: cropCoefficient,
+                            precipitationRate: precipitationRate,
+                            gpm: gpm
+                        });
+                    }}
+                /> */}
             </View>
 
         </ScrollView>
@@ -146,7 +204,11 @@ const AdvancedSettings = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // marginHorizontal: 16,
         marginHorizontal: 16,
+        marginBottom: 16,
+        marginTop: 16,
+        backgroundColor: "#f4f7f0"
     },
     baseText: {
         fontSize: 14,
@@ -160,7 +222,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     WrapBasic: {
-        borderColor: "#eee",
+        borderColor: "#f4f7f0",
         borderWidth: 3,
     },
     FormGroup: {
@@ -175,11 +237,15 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         borderWidth: 2,
         borderColor: "#282c34",
+        backgroundColor: "#eee",
         borderRadius: 10,
     },
     BtnWrap: {
         flex: 1,
-        backgroundColor: "#282c34",
+        backgroundColor: "#bfd2d0",
+        borderWidth: 1,
+        borderColor: "#282c34",
+        borderRadius: 5,
         margin: 5,
         height: 50,
         padding: 5
@@ -193,6 +259,7 @@ const pickerSelectStyles = StyleSheet.create({
         paddingHorizontal: 10,
         borderWidth: 2,
         borderColor: "#282c34",
+        backgroundColor: "#eee",
         borderRadius: 4,
         color: "black",
         paddingRight: 30, // to ensure the text is never behind the icon

@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from "react";
 import { Text, ScrollView, StyleSheet, TextInput, View, Button, SectionList } from "react-native";
-import { calculatePrecipitationRate, calculateWaterRequirement_noRain, calculatePlantAvailableWater, calculateWaterRequirement, calculateIrrigationFrequency, calculateZoneRuneTime, calculateRestrictedRunTime } from "../js/formulas";
+import { calculatePrecipitationRate, calculateWaterRequirement_noRain, calculatePlantAvailableWater, calculateWaterRequirement, calculateIrrigationFrequency, calculateZoneRunTime, calculateRestrictedRunTime, calculateIrrigationFrequency_intervals } from "../js/formulas";
 import monthlyRainfallData from "../api/texasMonthlyRain.json";
 import soilData from "../api/soilData.json";
 
@@ -78,6 +78,7 @@ const CreateSchedule = ({ route, navigation }) => {
         dec: city[12]
     }
 
+    let infiltrationRate = parseFloat(soilType["infiltrationRate"].flat_slope)
     if (!zoneName) {
         zoneName = "Zone 1";
     }
@@ -104,40 +105,52 @@ const CreateSchedule = ({ route, navigation }) => {
     if (sunExposure === "lots of sun") {
         if (slope === "steep") {
             adjustmentFactor = 1.5
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].steep_slope)
         } else if (slope === "moderate") {
             adjustmentFactor = 1.3
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].moderate_slope)
         } else if (slope === "slight") {
             adjustmentFactor = 1.2
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].slight_slope)
         } else {
             adjustmentFactor = 1.0
         }
     } else if (sunExposure === "some shade") {
         if (slope === "steep") {
             adjustmentFactor = 1.1
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].steep_slope)
         } else if (slope === "moderate") {
             adjustmentFactor = 1
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].moderate_slope)
         } else if (slope === "slight") {
             adjustmentFactor = 0.9
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].slight_slope)
         } else {
             adjustmentFactor = 0.8
         }
     } else if (sunExposure === "lots of shade") {
         if (slope === "steep") {
             adjustmentFactor = 1
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].steep_slope)
         } else if (slope === "moderate") {
             adjustmentFactor = 0.8
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].moderate_slope)
         } else if (slope === "slight") {
             adjustmentFactor = 0.7
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].slight_slope)
         } else {
             adjustmentFactor = 0.7
         }
     } else { // mostly shade
         if (slope === "steep") {
             adjustmentFactor = 1
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].steep_slope)
         } else if (slope === "moderate") {
             adjustmentFactor = 0.7
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].moderate_slope)
         } else if (slope === "slight") {
             adjustmentFactor = 0.6
+            infiltrationRate = parseFloat(soilType["infiltrationRate"].slight_slope)
         } else {
             adjustmentFactor = 0.5
         }
@@ -207,10 +220,26 @@ const CreateSchedule = ({ route, navigation }) => {
     }
 
     // calculate irrigation frequency
-    Object.keys(weeklyPlantRequirement).forEach(key => {
-        let freq = Math.ceil(calculateIrrigationFrequency(weeklyPlantRequirement[key], plantAvailableWater))
-        irrigationFreq[key] = freq;
-    });
+    if (days) {
+        Object.keys(weeklyPlantRequirement).forEach(key => {
+            let freq = Math.ceil(calculateIrrigationFrequency(weeklyPlantRequirement[key], plantAvailableWater))
+            irrigationFreq[key] = freq;
+            });
+    } else {
+        Object.keys(city).forEach(key => {
+            if (key !== "name") {
+                let dailyPET = city[key]/30.0;    // et rates is given in inches per month - dividing by 30 to get inches per day
+                if (!cropCoefficient) {
+                    cropCoefficient = zoneType.cropCoefficient;
+                } else {
+                    cropCoefficient = parseFloat(cropCoefficient);
+                }
+                let freq = Math.floor(calculateIrrigationFrequency_intervals(awhc*12.0, rootDepth/12.0, allowableDepletion, dailyPET, cropCoefficient))
+                irrigationFreq[key] = freq;
+            }
+        });
+    }
+    
 
     // calculate run time given days to water
     if (days) {
@@ -221,7 +250,19 @@ const CreateSchedule = ({ route, navigation }) => {
     } else {
         // calculate zone run time without days to water given
         Object.keys(irrigationFreq).forEach(key => {
-            let runTime = Math.ceil(calculateZoneRuneTime(weeklyPlantRequirement[key], irrigationFreq[key], precipitationRate));
+            // let runTime = Math.ceil(calculateZoneRuneTime(weeklyPlantRequirement[key], irrigationFreq[key], precipitationRate));
+            let dailyPET = city[key]/30.0;
+            if (!cropCoefficient) {
+                cropCoefficient = zoneType.cropCoefficient;
+            } else {
+                cropCoefficient = parseFloat(cropCoefficient);
+            }
+            if (!efficiency) {
+                efficiency = 0.6;
+            } else {
+                efficiency = parseFloat(efficiency);
+            }
+            let runTime = Math.ceil(calculateZoneRunTime(irrigationFreq[key], dailyPET, cropCoefficient, precipitationRate, efficiency))
             if (runTime === NaN) {
                 runTime = 1;
             } else if (runTime === Infinity) {
@@ -238,8 +279,8 @@ const CreateSchedule = ({ route, navigation }) => {
             element.title = key;
             element.data = [
                 "Plant water requirement: " + weeklyPlantRequirement[key].toFixed(2) + " in/week",
+                "Minutes per day: " + irrigationRunTime[key] + " minutes per day",
                 "Days to water: " + days + " day(s) a week",
-                "Minutes per day: " + irrigationRunTime[key] + " minutes per day"
             ]
             DATA.push(element);
         })
@@ -249,8 +290,9 @@ const CreateSchedule = ({ route, navigation }) => {
             element.title = key;
             element.data = [
                 "Plant water requirement: " + weeklyPlantRequirement[key].toFixed(2) + " in/week",
-                "Days to water: " + irrigationFreq[key] + " day(s) a week",
-                "Minutes per day: " + irrigationRunTime[key] + " minutes per day"
+                "Minutes per run: " + irrigationRunTime[key] + " minutes",
+                "Maximum days to skip: " + irrigationFreq[key] + " day(s)",
+                
             ]
             DATA.push(element);
         })
@@ -265,9 +307,10 @@ const CreateSchedule = ({ route, navigation }) => {
     );
 
     return (
-        <SectionList
+        <View style={styles.container}>
+          <SectionList
             ListHeaderComponent={
-                <View style={styles.container}>
+                <View>
                     <View style={styles.textWrap}>
                         {
                             rainfall === "yes" ?
@@ -308,7 +351,9 @@ const CreateSchedule = ({ route, navigation }) => {
                     <Text style={styles.header}>{title.toUpperCase()}</Text>
                 </View>
             )}
-        />
+        />  
+        </View>
+        
     )
 
 }
@@ -317,23 +362,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginHorizontal: 16,
+        marginBottom: 16,
+        marginTop: 16,
+        backgroundColor: "#f4f7f0"
     },
     footer: {
         padding: 50,
         alignItems: "center",
-        backgroundColor: "lightgray"
+        backgroundColor: "#f4f7f0"
     },
     textWrap: {
         borderBottomWidth: 2,
-        borderBottomColor: "lightgray"
+        borderBottomColor: "black"
     },
     baseText: {
         fontSize: 16,
         margin: 5
     },
     sectionWrap: {
-        borderTopColor: "lightgray",
-        borderBottomColor: "lightgray",
+        borderTopColor: "black",
+        borderBottomColor: "black",
         borderTopWidth: 2,
         borderBottomWidth: 2,
         margin: 10
@@ -344,7 +392,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     item: {
-        backgroundColor: "lightgray",
+        backgroundColor: "#bfd2d0",
         color: "white",
         padding: 15,
         margin: 10,

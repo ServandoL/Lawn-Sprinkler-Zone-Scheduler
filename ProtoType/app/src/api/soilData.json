@@ -2,7 +2,7 @@
     {
         "id": 1,
         "Type": "Clay",
-        "SoilWaterHoldingCapacity": 0.146,
+        "SoilWaterHoldingCapacity": 0.18,
         "PlantAvailableWater": 0.09,
         "InfiltrationRate": {
             "flat_slope": 0.13,

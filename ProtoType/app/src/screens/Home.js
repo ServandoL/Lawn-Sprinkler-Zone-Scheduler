@@ -28,12 +28,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
+        backgroundColor: "#f4f7f0",
         justifyContent: "center",
-        marginHorizontal: 16,
+        // marginHorizontal: 16,
     },
     BtnWrap: {
         borderWidth: 1,
         borderColor: "#232c34",
+        backgroundColor: "#bfd2d0",
         borderRadius: 5,
         margin: 5,
         padding: 5
