@@ -1,2 +1,3 @@
 # Lawn-Sprinkler-Zone-Scheduler
- A app to calculate zone run times.
+A mobile app to calculate lawn sprinkler system zone run times.
+ 
